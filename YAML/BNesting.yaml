@@ -1,0 +1,36 @@
+
+# https://jsonformatter.org/yaml-viewer
+
+# NESTING OF SEQUENCES
+my-sequence:
+  - item 1
+  - item 2
+  - item 3
+
+# NESTING OF MAPS
+my-map:
+  key1: value2
+  key2: value3
+  keyN: valueN
+
+# NESTING COMBINATIONS
+combination:
+  matrix:
+    - [1, 2, 3]
+    - [3, 4, 5]
+    - [7, 8, 9]
+  people:   
+    - name: Carlos
+      age: 22
+      friends:
+        - adan
+        - eva
+    - name: Ewa
+      age: 21
+      friends:
+        - name: Lucy
+          age: 12
+          favorite_color: red
+        - name: Eva
+          age: 12
+          favorite_color: blue

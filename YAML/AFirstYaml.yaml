@@ -1,0 +1,57 @@
+
+# my first yaml
+
+# first the YAML, have three principal data structures
+# scalars, sequences, maps
+
+# Example of SCALAR
+# a scalar is a pure and simple data at the first indentation level
+# they can be [a-z][0-9][specialCharacters]
+# they can be separated by _ or -
+value-one: hello world
+_value-two: hello there @@@
+23#a:this is a value # wrong the should start with a letter or underscore
+[hi, there]: this is a third scalar # wrong the should start with a letter or underscore
+
+# at the first examples, teh scalar is 'hello world'
+
+this: is-value # scalar = is-value
+active: false # scalar = active
+state: the inner state # scalar = the inner state
+# a scalar, or value, support spaces
+
+# Example of SEQUENCES
+# The sequences are similar to a list of elements
+# They are delimited by a -, separated by a space with their value
+# the indentation delimit the level of them
+my_list:
+  - item one
+  - item two
+  - item three
+
+my_todo:
+  - todo 1
+  - todo 2
+  - todo 3
+
+# Example of MAPS
+# they can be [a-z][0-9]
+# they can be separated by _ or -
+# they're delimited by indentation at the same level
+# their key should be unique 
+my-map:
+  name: ricardo
+  last-name: hernandez
+
+
+# a final example
+name: Ricardo Hernández
+favorite_colors:
+  - gray
+  - dark blue
+  - wine red
+location:
+  country: guatemala
+  state: quiche
+
+
