@@ -1,0 +1,104 @@
+
+
+# Advanced Topics of YAML
+# --- Multi line strings
+# --- YAML Aliases and anchors
+# --- Advanced formatting 
+# --- Best practice for structuring complex YAML files
+
+# 1. Multi-line Strings and Block Literals:
+# YAML supports multi-line strings, which can be represented in two styles: folded and literal.
+# Folded style (>): This style folds line breaks into spaces except for those that end the string, preserving newlines.
+# Literal style (|): This style retains all line breaks and indentation, preserving the original formatting of the text.
+my_strings:
+  my_first_string: >
+    my multilane strings
+    with the fold style
+    this is the third line
+  my_second_string: |
+    this is another
+    multi-line
+    text
+    with the literal style
+
+# 2 - YAML ALIASES AND Anchors
+common_data: &COMMON_DATA
+  key1: value1
+  key2: value2
+  key3: value3
+
+specific_data1:
+  <<: *COMMON_DATA
+  name: this_is_data
+
+specific_data2:
+  <<: *COMMON_DATA
+  key1: specific data for this key
+
+# 3 - Advanced formatting
+# inline syntax
+inline_structure: { key1: value1, key2: value2 }
+
+# Block Syntax
+block_structure:
+  key1: value1
+  key2: value2
+
+# Comments
+commented_data:
+  # This is a comment
+  key1: value1 # Inline comment
+  # Multi-line comment
+  # Line 2 of the comment
+  key2: value 2
+
+
+
+# EXERCISES 
+
+# 1 - Create a YAML file containing multi-line strings using both folded and literal styles.
+# 2 - Explore YAML aliases and anchors by defining reusable data structures within your YAML file.
+# 3 - Experiment with advanced formatting and indentation 
+# Techniques to improve the readability of your YAML file.
+# 4 - Practice structuring a complex YAML file, such as a configuration
+# file for a multi-tier application, following best practices and conventions.
+DB_CONN: &DB_CONN
+  user: user_DB
+  password: password
+  db: db_instance
+
+exercise1:
+  multi-line-strings:
+    string-one: >
+      multi line
+      string 
+      two
+    string-two: |
+      multi line
+      string
+      three
+    DB_CONFIG:
+      <<: *DB_CONN
+      thread_instances: 2
+      environment: ${ENVIRONMENT}
+    logs: { errors: api error, system-crash: api system }
+    tiers:
+      - name: fronted
+        hosts:
+          - host1.example.com
+          - host2.example.com
+        settings:
+          max_connections: 1000
+          cache_size: 100MB
+
+      - name: backend
+        hosts:
+          - host3.example.com
+          - host4.example.com
+        ports:
+          http: 8080
+          https: 8443
+        settings:
+          max_threads: 50
+          cache_expiry: 3600 seconds
+

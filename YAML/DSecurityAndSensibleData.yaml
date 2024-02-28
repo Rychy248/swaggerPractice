@@ -1,0 +1,27 @@
+
+# DATA SECURITY - how to work with that kind of data in YAML
+
+# ANCHOR TO SAVE THE SENSIBLE DATA
+credentials: &DB_CONN
+  user: secret_user
+  password: the_password
+
+#reference
+production_DB:
+  <<: *DB_CONN
+  database: my_database
+
+# mask to the data
+credentialsTwo:
+  user: user_name
+  # !!binary is a special way to represent data based on base64
+  password: !!binary |
+    MWYyZDFlMmU2N2Rm
+  database: my_database
+
+# using envs to sae the data
+production_DB_TWO:
+  user: ${USERNAME} # the dollar sign and brackets are using to reference envs vars
+  password: ${PASSWORD} # but the env vars should be used only where them are supported
+  database: the_database
+

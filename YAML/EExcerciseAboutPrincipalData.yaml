@@ -1,0 +1,62 @@
+
+# Exercise
+# Create a YAML file containing a list of fruit names.
+
+# Define a dictionary in YAML that represents student information,
+#   including their name, age, and a list of subjects.
+
+# Nest a list within a dictionary in YAML to represent more complex information,
+# such as the list of students in a class with their respective grades.
+
+# part 1 - list of fruits
+fruits: 
+  - mango
+  - orange
+  - strawberry
+  - kiwi
+  - watermelon
+
+# part 2 - Student information
+student1:
+  name: Make
+  age: 12
+  subjects: 
+    - course: language
+      score_reached: 10
+      total_score: 10
+    - course: programming
+      score_reached: 8
+      total_score: 10
+    - course: geography
+      score_reached: 9
+      total_score: 10
+      lose: false
+
+
+# part 3
+fifthGrade: &FIFTH_GRADE
+    Carlos:
+      lastName: Mitch
+      from: Guatemala
+      phoneNumber: 2323232323
+      favoriteColor: blue
+    Vladimir:
+      lastName: Rustian
+      from: Canada
+      phoneNumber: 45754574
+      favoriteColor: green
+    Jose:
+      lastName: Mitch
+      from: Guatemala
+      phoneNumber: 78454545
+      favoriteColor: yellow
+
+classes:
+  - name: math
+    students: *FIFTH_GRADE
+  - name: geography
+    students: *FIFTH_GRADE
+  - name: social media
+    students: *FIFTH_GRADE
+  - name: anthropology
+    students: *FIFTH_GRADE

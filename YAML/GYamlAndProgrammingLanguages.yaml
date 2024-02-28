@@ -1,0 +1,23 @@
+
+# TUTORIAL FOR THIS EXERCISE https://gabrieleromanato.name/nodejs-parsing-a-yaml-file
+
+# EXERCISE
+# Write a simple script in your preferred programming language to read a YAML file and print its contents.
+# Write a script to create a YAML file from scratch using a YAML library.
+# Explore how YAML libraries handle data types like lists, dictionaries, and multi-line strings.
+# Practice error handling and validation when reading YAML files in code.
+
+---
+
+
+
+key1: as
+key2: as
+
+
+
+...
+
+
+
+## GOOD TUTORIAL FOR YAML: https://www.w3schools.io/file/yaml-arrays/

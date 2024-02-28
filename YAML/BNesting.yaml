@@ -30,7 +30,13 @@ combination:
       friends:
         - name: Lucy
           age: 12
-          favorite_color: red
+          favorite_color: 
+            - red
+            - blue
+            - green
+          degrees:
+            - teacher
+            - doctor
         - name: Eva
           age: 12
           favorite_color: blue

@@ -1,0 +1,38 @@
+
+
+# SESSION 3
+# Anchors and references
+
+# Anchors are ids for a specific peace of data, they can be called from any part of the file
+# References are the way to call the anchors inside the YAML file
+
+
+# ANCHOR 1
+share-date: &data
+  name: someName
+  last-name: the name
+  age: 0
+
+# REFERENCE 2
+person1: *data
+person2: *data
+
+# FUSION SYNTAX, at this way we can merge attributes or redefine them
+person3:
+  <<: *data # data is merging with person3
+  name: Charlie
+  age: 12
+
+
+
+# Exercise - reuse the anchor into two places
+cascade-constrain: &CASCADE_CONSTRAIN
+  on_update: CASCADE
+  on_delete: CASCADE
+
+person_table:
+  constrain: *CASCADE_CONSTRAIN
+
+animal_table:
+  constrain: *CASCADE_CONSTRAIN
+
