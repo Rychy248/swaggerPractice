@@ -1,6 +1,4 @@
 
-# TUTORIAL FOR THIS EXERCISE https://gabrieleromanato.name/nodejs-parsing-a-yaml-file
-
 # EXERCISE
 # Write a simple script in your preferred programming language to read a YAML file and print its contents.
 # Write a script to create a YAML file from scratch using a YAML library.
@@ -10,10 +8,10 @@
 ---
 
 
-
-key1: as
-key2: as
-
+myMap:
+  key1: value1
+  key2: value2
+  key3: value3
 
 
 ...
