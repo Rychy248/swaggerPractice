@@ -1,11 +1,17 @@
 
-
 // YAML consumer
 'use strict';
 import fs from "fs";
 import yaml from "js-yaml";
 import { fileURLToPath } from "url";
 import path from "path";
+
+function yamlReminder(display) {
+  console.log('-----------------------');
+  console.log('FROM YAML PRACTICE');
+  console.log(...display);
+  console.log('-----------------------');  
+};
 
 /**
  * This function print the lecture from a YAML file, 'GYamlAndProgrammingLanguages.yaml'
@@ -17,9 +23,9 @@ export const GNodeScript = ()=> {
     const filePath = path.resolve(__dirname, 'GYamlAndProgrammingLanguages.yaml');
     const data = fs.readFileSync(filePath, 'utf8');
     const parsedData = yaml.load(data);
-    console.log('Data from YAML',parsedData);
+    yamlReminder('Data from YAML',parsedData);
   } catch (e) {
-    console.log('Ups some Bad was happened: ',e);
+    yamlReminder('Ups some Bad was happened: ',e);
   };
 };
 

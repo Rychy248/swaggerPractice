@@ -1,20 +1,34 @@
 // models/User.js
 
-class users  {
-  static users = [];
+class User{
+  id;
+  username;
+  email;
 
-  static find(){
-    this.users.filter( users => {
-
-    });
+  constructor({id, username, email}){
+    this.id = id
+    this.username = username;
+    this.email = email;
   };
+  
+  static async findAll(){
+
+    return [
+      new User({id:1, username:'Antonio', email:'jorgeajrha@gmail.com'}),
+      new User({id:2, username:'Jorge', email:'jorgeajrha@gmail.com'}),
+      new User({id:3, username:'Ricardo', email:'jorgeajrha@gmail.com'}),
+    ];
+  };
+
+  static async createUser(user){
+    return {
+      rows_inserted:1,
+      user
+    };
+  };
+
 };
 
-const userSchema = new mongoose.Schema({
-  username: { type: String, required: true },
-  email: { type: String, required: true, unique: true }
-});
 
-const User = mongoose.model('User', userSchema);
+export default User;
 
-module.exports = User;
