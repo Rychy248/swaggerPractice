@@ -6,6 +6,12 @@ info:
 servers:
   - url: http://localhost:3000/
 paths:
+  /swaggerAPI/docs:
+    get:
+      description: ''
+      responses:
+        default:
+          description: ''
   /swaggerAPI/user/:
     get:
       tags:

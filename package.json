@@ -4,7 +4,7 @@
   "description": "swagger practice",
   "main": "index.mjs",
   "scripts": {
-    "run": "nodemon src/app.mjs",
+    "server": "nodemon src/app.mjs",
     "swagger": "node ./app/swagger/swagger.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

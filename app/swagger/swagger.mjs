@@ -20,8 +20,6 @@ function loadDoc(params) {
     return process.env[variableName] || match
   });
   const doc = {... yaml.load(data)};
-  console.log('Data from YAML',doc);
-
   return doc;
 };
 
@@ -37,7 +35,7 @@ async function swaggerGen (){
     root file where the route starts, such as index.js, app.js, routes.js, etc ... */
     
     const specifications = await swaggerAutogen({openapi: '3.0.0'})(outputFile, routes, doc)
-    console.log("specification",specifications);
+    
     console.log(`Swagger YAML generated successfully into ${outputFile}`);
     const yamlFormat = yaml.dump(specifications.data);
     fs.writeFileSync(outputFile, yamlFormat, 'utf-8');

@@ -3,25 +3,24 @@
  */
 // routes/userRoutes.js
 import express from "express";
-// import swaggerUi from "swagger-ui-express"
+import swaggerUi from "swagger-ui-express"
 // yaml import
-// import fs from "fs";
-// import { fileURLToPath } from "url";
-// import path from "path";
-// import yaml from 'js-yaml';
+import fs from "fs";
+import { fileURLToPath } from "url";
+import path from "path";
+import yaml from 'js-yaml';
 
 import userRouter from "./userRoute.mjs";
 
-// function getSwaggerDoc() {
-//   const __filename = fileURLToPath(import.meta.url);
-//   const __dirname = path.dirname(__filename);
+function getSwaggerDoc() {
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
 
-//   const filePath = path.resolve(__dirname, '../swagger/swagger-output.yaml');
-//   const yamlContent = fs.readFileSync(filePath, 'utf8');
-//   const swaggerDocument = yaml.load(yamlContent);
-//   console.log(swaggerDocument);
-//   return swaggerDocument;
-// };
+  const filePath = path.resolve(__dirname, '../swagger/swagger-output.yaml');
+  const yamlContent = fs.readFileSync(filePath, 'utf8');
+  const swaggerDocument = yaml.load(yamlContent);
+  return swaggerDocument;
+};
 
 /**
  * @description this is the principal/root router for all the api
@@ -33,10 +32,9 @@ function urlFunction(app) {
   swaggerPractice.use('/user', userRouter);
   swaggerPractice.use('/otherUser', userRouter);
 
-
-  // const swaggerDocument = getSwaggerDoc();
-  // swaggerPractice.use('/swaggerAPI/docs', swaggerUi.serve);
-  // swaggerPractice.get('/swaggerAPI/docs', swaggerUi.setup(swaggerDocument));
+  const swaggerDocument = getSwaggerDoc();
+  swaggerPractice.use('/docs', swaggerUi.serve);
+  swaggerPractice.get('/docs', swaggerUi.setup(swaggerDocument));
 
   app.use("/swaggerAPI", swaggerPractice);
 

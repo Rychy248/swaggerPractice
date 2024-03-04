@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: app/models/User.mjs</title>
+    <title>JSDoc: Source: app/routers/userRoute.mjs</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: app/models/User.mjs</h1>
+    <h1 class="page-title">Source: app/routers/userRoute.mjs</h1>
 
     
 
@@ -26,53 +26,20 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>// models/User.js
-/**
- * @class 
- * @classdesc this class manage the user data
+            <pre class="prettyprint source linenums"><code>/**
+ * @module userRouter this is the module to route the user
  */
-class User{
-  id;
-  username;
-  email;
+// routes/userRoutes.js
+import express from "express";
+import UserController from '../controllers/UserController.mjs';
 
-  constructor({id, username, email}){
-    this.id = id
-    this.username = username;
-    this.email = email;
-  };
+const userRouter = express.Router();
 
-  /**
-   * static 
-   * @static
-   * @returns { Array } a list or users
-   */
-  static async findAll(){
+// Define user routes
+userRouter.get('/', UserController.get);
+userRouter.post('/', UserController.post);
 
-    return [
-      new User({id:1, username:'Antonio', email:'jorgeajrha@gmail.com'}),
-      new User({id:2, username:'Jorge', email:'jorgeajrha@gmail.com'}),
-      new User({id:3, username:'Ricardo', email:'jorgeajrha@gmail.com'}),
-    ];
-  };
-
-  /**
-   * static 
-   * @static
-   * @returns { Object } a object for the where find the user contain
-   */
-  static async createUser(user){
-    return {
-      rows_inserted:1,
-      user
-    };
-  };
-
-};
-
-
-export default User;
-
+export default userRouter;
 </code></pre>
         </article>
     </section>

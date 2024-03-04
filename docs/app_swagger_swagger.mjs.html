@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: app/models/User.mjs</title>
+    <title>JSDoc: Source: app/swagger/swagger.mjs</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: app/models/User.mjs</h1>
+    <h1 class="page-title">Source: app/swagger/swagger.mjs</h1>
 
     
 
@@ -26,53 +26,54 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>// models/User.js
-/**
- * @class 
- * @classdesc this class manage the user data
+            <pre class="prettyprint source linenums"><code>/**
+ * @module swagger.mjs swagger generation
  */
-class User{
-  id;
-  username;
-  email;
+import fs from "fs";
+import { fileURLToPath } from "url";
+import path from "path";
 
-  constructor({id, username, email}){
-    this.id = id
-    this.username = username;
-    this.email = email;
-  };
+import yaml from 'js-yaml';
+import dotenv from 'dotenv';
+import swaggerAutogen from 'swagger-autogen';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-  /**
-   * static 
-   * @static
-   * @returns { Array } a list or users
-   */
-  static async findAll(){
-
-    return [
-      new User({id:1, username:'Antonio', email:'jorgeajrha@gmail.com'}),
-      new User({id:2, username:'Jorge', email:'jorgeajrha@gmail.com'}),
-      new User({id:3, username:'Ricardo', email:'jorgeajrha@gmail.com'}),
-    ];
-  };
-
-  /**
-   * static 
-   * @static
-   * @returns { Object } a object for the where find the user contain
-   */
-  static async createUser(user){
-    return {
-      rows_inserted:1,
-      user
-    };
-  };
-
+function loadDoc(params) {
+  const filePath = path.resolve(__dirname, 'doc.yaml');
+  let data = fs.readFileSync(filePath, 'utf8');
+  
+  data = data.replace(/\${([^}]*)}/g, (match, p1) => {
+    const variableName = p1.replace(/\${|}/g, '');
+    return process.env[variableName] || match
+  });
+  const doc = {... yaml.load(data)};
+  return doc;
 };
 
+async function swaggerGen (){
+  dotenv.config({ path: `.env.local`, override: true });
 
-export default User;
+  try {
+    
+    const outputFile = `${__dirname}/swagger-output.yaml`;
+    const routes = [`${__dirname}/../routers/urls.mjs`];
+    const doc = loadDoc();
+    /* NOTE: If you are using the express Router, you must pass in the 'routes' only the 
+    root file where the route starts, such as index.js, app.js, routes.js, etc ... */
+    
+    const specifications = await swaggerAutogen({openapi: '3.0.0'})(outputFile, routes, doc)
+    
+    console.log(`Swagger YAML generated successfully into ${outputFile}`);
+    const yamlFormat = yaml.dump(specifications.data);
+    fs.writeFileSync(outputFile, yamlFormat, 'utf-8');
 
+  } catch (e) {
+    console.log('Ups some Bad was happened: ',e);
+  };  
+};
+
+swaggerGen();
 </code></pre>
         </article>
     </section>
