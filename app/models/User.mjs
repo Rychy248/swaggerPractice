@@ -1,5 +1,8 @@
 // models/User.js
-
+/**
+ * @class 
+ * @classdesc this class manage the user data
+ */
 class User{
   id;
   username;
@@ -10,7 +13,12 @@ class User{
     this.username = username;
     this.email = email;
   };
-  
+
+  /**
+   * static 
+   * @static
+   * @returns { Array } a list or users
+   */
   static async findAll(){
 
     return [
@@ -20,6 +28,11 @@ class User{
     ];
   };
 
+  /**
+   * static 
+   * @static
+   * @returns { Object } a object for the where find the user contain
+   */
   static async createUser(user){
     return {
       rows_inserted:1,

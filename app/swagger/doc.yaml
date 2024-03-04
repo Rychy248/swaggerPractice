@@ -1,0 +1,5 @@
+
+info:
+    title: 'Fitch API'
+    description: 'This provide the FITCH API documentation'
+host: ${HOST}:${APP_PORT}

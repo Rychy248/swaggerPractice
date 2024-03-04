@@ -5,6 +5,7 @@
   "main": "index.mjs",
   "scripts": {
     "run": "nodemon src/app.mjs",
+    "swagger": "node ./app/swagger/swagger.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,7 +20,13 @@
   "homepage": "https://github.com/Rychy248/swaggerPractice#readme",
   "dependencies": {
     "body-parser": "^1.20.2",
+    "dotenv": "^16.4.5",
     "express": "^4.18.2",
-    "js-yaml": "^4.1.0"
+    "js-yaml": "^4.1.0",
+    "jsdoc": "^4.0.2",
+    "swagger-ui-express": "^5.0.0"
+  },
+  "devDependencies": {
+    "swagger-autogen": "^2.23.7"
   }
 }

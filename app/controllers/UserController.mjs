@@ -1,3 +1,7 @@
+
+/**
+ * @module UserController this module define the user controllers for HTTP methods
+ */
 // controllers/UserController.js
 
 import User from "../models/User.mjs";
@@ -5,7 +9,7 @@ import User from "../models/User.mjs";
 // Example controller methods
 const userController = {
   async get (req, res){
-
+    // #swagger.tags = ['Users']
     try {
       const users = await User.findAll();
       res.json(users);
